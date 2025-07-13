@@ -22,9 +22,9 @@ export default function SearchBar({ onSearch }: Props) {
         placeholder="Enter city name"
         value={city}
         onChange={(e) => setCity(e.target.value)}
-        className="input input-bordered input-accent w-60"
+        className="input input-md bg-neutral-700 w-60"
       />
-      <button type="submit" className="btn btn-accent">
+      <button type="submit" className="btn bg-orange-400 border-0">
         Search
       </button>
     </form>

@@ -4,6 +4,10 @@ import { useState } from 'react'
 import SearchBar from '@/components/SearchBar'
 import WeatherCard from '@/components/WeatherCard'
 import Error from '@/components/Error'
+import Opening from '@/components/Opening'
+import { WiDayCloudy } from "react-icons/wi";
+import {motion} from "framer-motion"
+
 
 export default function Home() {
   const [weather, setWeather] = useState<any>(null)
@@ -30,11 +34,18 @@ export default function Home() {
   }
 
   return (
-    <main className="min-h-screen bg-base-200 flex flex-col items-center justify-start p-6">
-      <h1 className="text-4xl font-bold mt-10 text-accent">Weather App</h1>
-      <SearchBar onSearch={handleSearch} />
+    <><Opening />
+   <main className="min-h-screen bg-[#FAF7F0] flex flex-col  justify-start p-6">
+    <div className='flex w-full '>
+      <motion.h1 className="flex text-3xl font-bold items-center text-neutral-700"
+      >
+        Weather App 
+        <WiDayCloudy className='text-orange-400 size-16'/>
+      </motion.h1>
+    </div>
+      <SearchBar  onSearch={handleSearch} />
       {error && <Error message={error} />}
       {weather && <WeatherCard data={weather} />}
-    </main>
+    </main></>
   )
 }

@@ -9,9 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "daisyui": "^5.0.46",
+    "framer-motion": "^12.23.3",
     "next": "15.3.5",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-icons": "^5.5.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -22,7 +25,20 @@
     "daisyui": "^5.0.46",
     "eslint": "^9",
     "eslint-config-next": "15.3.5",
-    "tailwindcss": "^4",
+    "tailwindcss": "^4.1.11",
     "typescript": "^5"
-  }
+  },
+  "description": "This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Raizen014/Weather-App.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Raizen014/Weather-App/issues"
+  },
+  "homepage": "https://github.com/Raizen014/Weather-App#readme"
 }
