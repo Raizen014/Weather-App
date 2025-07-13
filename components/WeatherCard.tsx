@@ -37,21 +37,27 @@ export default function WeatherCard({ data }: Props) {
           duration: 0.4,
           scale: { type: "spring", visualDuration: 0.4, bounce: 0.5 },
       }}
-      className="mt-8 bg-neutral-800 opacity-30 p-6 rounded-xl shadow-xl text-center w-80 mx-auto"
+      className="flex flex-col mt-8 bg-neutral-800 opacity-30 p-6 rounded-xl shadow-xl text-center w-96 md:max-w-[860px] mx-auto"
     >
       <h2 className="text-3xl font-bold text-neutral-200 mb-2">{data.name}</h2>
-      <img
-        src={`https://openweathermap.org/img/wn/${data.weather[0].icon}@4x.png`}
-        alt={data.weather[0].description}
-        className="mx-auto"
-      />
-      <p className="text-4xl font-semibold">
-        {Math.round(data.main.temp)}°C
-      </p>
-      <p className="text-base text-gray-500 font-bold capitalize mt-2 mb-4">
-        {data.weather[0].description}
-      </p>
-
+      <div className="flex items-center">
+          <img
+            src={`https://openweathermap.org/img/wn/${data.weather[0].icon}@4x.png`}
+            alt={data.weather[0].description}
+            className="mx-auto"
+          />
+          <div className="flex text-start flex-col">
+            <p>
+              Temperature
+            </p>
+            <p className="text-4xl font-semibold">
+            {Math.round(data.main.temp)}°C
+            </p>
+            <p className="text-base text-gray-500 font-bold capitalize mt-2 mb-4">
+              {data.weather[0].description}
+            </p>
+          </div>
+      </div>
 
 
       <div className="flex text-sm justify-evenly gap-6 text-neutral-400 space-y-1">

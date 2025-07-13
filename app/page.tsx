@@ -36,7 +36,7 @@ export default function Home() {
   return (
     <><Opening />
    <main className="min-h-screen bg-[#FAF7F0] flex flex-col  justify-start p-6">
-    <div className='flex w-full '>
+    <div className='flex w-full justify-center '>
       <motion.h1 className="flex text-3xl font-bold items-center text-neutral-700"
       >
         Weather App 
