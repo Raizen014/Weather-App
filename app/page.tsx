@@ -1,51 +1,40 @@
 'use client'
 
 import { useState } from 'react'
-import { fetchWeather } from '@/utils/fetchWeather'
+import SearchBar from '@/components/SearchBar'
+import WeatherCard from '@/components/WeatherCard'
+import Error from '@/components/Error'
 
-export default function WeatherApp() {
-  const [city, setCity] = useState('')
-  const [data, setData] = useState(null)
-  const [error, setError] = useState('')
-  const [loading, setLoading] = useState(false)
+export default function Home() {
+  const [weather, setWeather] = useState<any>(null)
+  const [error, setError] = useState<string | null>(null)
 
-  const handleSearch = async () => {
+  const handleSearch = async (city: string) => {
+    setError(null)
+    setWeather(null)
+
     try {
-      setLoading(true)
-      setError('')
-      const result = await fetchWeather(city)
-      setData(result)
+      const res = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.NEXT_PUBLIC_WEATHER_API}&units=metric`
+      )
+      const data = await res.json()
+
+      if (data.cod !== 200) {
+        setError('City not found.')
+      } else {
+        setWeather(data)
+      }
     } catch (err) {
-      setError('City not found')
-    } finally {
-      setLoading(false)
+      setError('Something went wrong.')
     }
   }
 
   return (
-    <div className="min-h-screen bg-base-200 flex flex-col items-center justify-center p-4">
-      <div className="flex gap-2 mb-6">
-        <input
-          value={city}
-          onChange={(e) => setCity(e.target.value)}
-          placeholder="Enter city"
-          className="input input-bordered"
-        />
-        <button className="btn btn-accent" onClick={handleSearch}>Search</button>
-      </div>
-
-      {loading && <p className="text-accent">Loading...</p>}
-      {error && <p className="text-error">{error}</p>}
-
-      {data && (
-        <div className="bg-base-100 rounded-lg p-6 shadow-lg w-full max-w-sm text-center">
-          <h2 className="text-xl font-bold">{data.name}</h2>
-          <p>{data.weather[0].main}</p>
-          <p>🌡️ {data.main.temp} °C</p>
-          <p>💧 {data.main.humidity}% humidity</p>
-          <p>🌬️ {data.wind.speed} m/s</p>
-        </div>
-      )}
-    </div>
+    <main className="min-h-screen bg-base-200 flex flex-col items-center justify-start p-6">
+      <h1 className="text-4xl font-bold mt-10 text-accent">Weather App</h1>
+      <SearchBar onSearch={handleSearch} />
+      {error && <Error message={error} />}
+      {weather && <WeatherCard data={weather} />}
+    </main>
   )
 }
