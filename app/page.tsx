@@ -54,9 +54,8 @@ export default function Home() {
         <div className="flex w-full justify-center">
           <motion.h1
             className="flex text-3xl font-bold items-center text-neutral-700"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            initial={{ opacity: 1 }}
+            transition={{ duration: 1 , delay:2.6}}
           >
             Weather App
             <WiDayCloudy className="text-orange-400 size-16 ml-2" />

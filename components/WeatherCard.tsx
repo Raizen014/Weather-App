@@ -2,6 +2,7 @@ import { LuWind } from "react-icons/lu";
 import { WiHumidity} from "react-icons/wi";
 import { IoMdRainy } from "react-icons/io";
 import { motion} from 'framer-motion'
+import Image from "next/image";
 
 interface WeatherData {
   name: string
@@ -41,11 +42,14 @@ export default function WeatherCard({ data }: Props) {
     >
       <h2 className="text-3xl font-bold text-neutral-200 mb-2">{data.name}</h2>
       <div className="flex items-center">
-          <img
+          <Image
             src={`https://openweathermap.org/img/wn/${data.weather[0].icon}@4x.png`}
             alt={data.weather[0].description}
+            width={200}
+            height={200}
             className="mx-auto"
           />
+
           <div className="flex text-start flex-col">
             <p>
               Temperature
