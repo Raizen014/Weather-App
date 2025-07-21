@@ -38,7 +38,7 @@ export default function WeatherCard({ data }: Props) {
           duration: 0.4,
           scale: { type: "spring", visualDuration: 0.4, bounce: 0.5 },
       }}
-      className="flex flex-col mt-8 bg-neutral-800 opacity-30 p-6 rounded-xl shadow-xl text-center w-96 md:max-w-[860px] mx-auto"
+      className="flex flex-col mt-8 bg-neutral-800 opacity-30 p-6 rounded-xl shadow-xl text-center w-full md:w-[480px] mx-auto"
     >
       <h2 className="text-3xl font-bold text-neutral-200 mb-2">{data.name}</h2>
       <div className="flex items-center">
