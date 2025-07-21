@@ -50,7 +50,7 @@ export default function WeatherCard({ data }: Props) {
             className="mx-auto"
           />
 
-          <div className="flex text-start flex-col">
+          <div className="flex text-start text-neutral-200 flex-col">
             <p>
               Temperature
             </p>
